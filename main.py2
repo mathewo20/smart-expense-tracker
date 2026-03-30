@@ -18,7 +18,6 @@ while True:
     if date.lower() == 'exit':
         break
 
-
     catagories = input("enter catagories: ")
     amount = float(input("enter amount:$ "))
     description = input("what was the item: ")
@@ -29,7 +28,7 @@ while True:
         'amount': amount,
         'description': description
         })
-print("Expense added")
+    print("Expense added")  # ← moved inside the loop so it prints each time
 
 #create the bar graph
 
@@ -39,8 +38,7 @@ summary = df.groupby('catagories')['amount'].sum()
 summary.plot(kind='bar')          
 plt.title("Expenses by Category") 
 plt.xlabel("Category")            
-plt.ylabel("Amount ($)")          
+plt.ylabel("Amount ($)")
+plt.xticks(rotation=45, ha='right')  # ← stops labels from overlapping
 plt.tight_layout()                
-plt.show()          
-
-
+plt.show()
